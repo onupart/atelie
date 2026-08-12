@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P01 — Quem o sistema vê? | Jesus Crypto</title>
+<style>
+:root{--paper:#eee6d6;--ink:#181714;--rust:#7b2f15;--blue:#244b55;--line:#8b7b62;--muted:#675f53}
+*{box-sizing:border-box}body{margin:0;background:#151512;color:var(--ink);font-family:Georgia,'Times New Roman',serif}.page{max-width:1040px;margin:auto;background:var(--paper);min-height:100vh;box-shadow:0 0 60px #0008}.hero{padding:54px 7vw 30px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#e9dfcd,#f3ecdf)}.kicker{font:700 14px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.12em;color:var(--rust)}h1{font-size:clamp(42px,8vw,88px);line-height:.9;margin:.25em 0 .18em;letter-spacing:-.04em}.lede{max-width:760px;font-size:20px;line-height:1.55;color:#332f2a}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;padding:34px 7vw}.panel{border:1px solid var(--line);background:#f6efe3;padding:22px}.panel h2{font-size:28px;margin:0 0 8px}.micro{font:12px/1.5 ui-monospace,Consolas,monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.layerButtons{display:grid;gap:9px;margin:18px 0}.layerButtons button{width:100%;text-align:left;border:1px solid #8d816f;background:#ece3d3;padding:12px 14px;cursor:pointer;font:600 15px ui-monospace,Consolas,monospace;color:#24211d}.layerButtons button.active{background:#22211e;color:#f1e8d8;border-color:#22211e}.metric{font:700 clamp(48px,8vw,76px)/1 ui-monospace,Consolas,monospace;margin:14px 0 6px;color:var(--blue)}.delta{font:14px ui-monospace,Consolas,monospace;color:var(--rust);min-height:1.5em}.question{font-size:27px;line-height:1.25;border-left:5px solid var(--rust);padding-left:18px;margin:22px 0}.sound{margin:0 7vw 38px;padding:24px;border:1px solid var(--line);background:#282621;color:#f1e9dc}.sound h2{color:#fff;margin:0 0 5px;font-size:26px}.sound p{color:#d6cab8;line-height:1.5}.cta{display:inline-block;padding:12px 16px;border:1px solid #d7c7ae;color:#fff;text-decoration:none;font:700 14px ui-monospace,Consolas,monospace;letter-spacing:.04em}.cta:hover{background:#eee4d3;color:#222}.note{padding:0 7vw 44px;color:#4d473f;line-height:1.55}.footer{padding:22px 7vw;background:#1f1e1b;color:#c9bba6;font:12px/1.6 ui-monospace,Consolas,monospace}.badge{display:inline-block;background:var(--rust);color:#fff;padding:5px 9px;font:700 12px ui-monospace,Consolas,monospace}@media(max-width:780px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="page">
+<section class="hero">
+<div class="kicker">JESUS CRYPTO · PORTAL P01</div>
+<h1>Quem o sistema vê?</h1>
+<p class="lede">Uma cidade não tem um único número. Ela muda conforme o critério de contagem. Este portal confronta população oficial, observada, provável, funcional e necessária — e pergunta o que acontece com quem permanece entre uma camada e outra.</p>
+</section>
+<section class="grid">
+<div class="panel">
+<div class="micro">CENSO PERMANENTE · INTERFACE EXPERIMENTAL</div>
+<h2>As cinco cidades</h2>
+<div class="layerButtons" id="buttons"></div>
+<div id="metric" class="metric">197.196</div>
+<div id="delta" class="delta">camada oficial · referência</div>
+<p id="desc">População reconhecida administrativamente. É a cidade que cabe no cadastro.</p>
+</div>
+<div class="panel">
+<div class="micro">LEITURA CRÍTICA</div>
+<div class="question">Quando um indicador muda, a cidade mudou — ou mudou apenas quem o sistema consegue reconhecer?</div>
+<p>O experimento não apresenta uma população “verdadeira”. Ele mostra que diferentes infraestruturas de informação produzem cidades diferentes. O número <strong>necessário</strong> permanece deliberadamente sem valor: necessidades coletivas não podem ser deduzidas automaticamente de um cadastro.</p>
+<span class="badge">MÉTRICA ≠ VIDA</span>
+</div>
+</section>
+<section class="sound">
+<div class="micro" style="color:#bda98e">PONTE SONORA · S01</div>
+<h2>Ranking Não Mede Sangue</h2>
+<p>3min55s · métrica urbana versus corpo e vida. A canção pertence à trilha curatorial expandida do <em>Companion Book</em> e aqui funciona como ponte seletiva para P01.</p>
+<a class="cta" href="https://drive.google.com/file/d/1WExnIK1oqVxoVFVZLR920UH8kRZwxTPS/view" target="_blank" rel="noopener">OUVIR S01 ↗</a>
+</section>
+<section class="note">
+<p><strong>Regra do portal:</strong> esta experiência acrescenta uma camada ao romance; não substitui a narrativa nem oferece uma resposta única. O leitor deve sair com uma pergunta mais precisa sobre contagem, reconhecimento e poder.</p>
+<p class="micro">P01 · PROTÓTIPO WEB v01 · JESUS CRYPTO</p>
+</section>
+<footer class="footer">P01 — QUEM O SISTEMA VÊ · JESUS CRYPTO: ETERNIDADE OU MORTE · PORTAL TRANSMÍDIA · 2026</footer>
+</main>
+<script>
+const layers=[
+{id:'oficial',label:'OFICIAL',value:197196,desc:'População reconhecida administrativamente. É a cidade que cabe no cadastro.'},
+{id:'observada',label:'OBSERVADA',value:228742,desc:'Presenças detectadas por observação e infraestrutura. Nem toda presença observada equivale a reconhecimento jurídico.'},
+{id:'provavel',label:'PROVÁVEL',value:246891,desc:'Estimativa que admite lacunas e incerteza. Amplia o campo do visível sem resolver quem tem direitos.'},
+{id:'funcional',label:'FUNCIONAL',value:311204,desc:'A cidade de quem usa, atravessa, trabalha e depende das infraestruturas urbanas, mesmo sem residir nos registros oficiais.'},
+{id:'necessaria',label:'NECESSÁRIA',value:null,desc:'Não definida. A necessidade não pode ser calculada automaticamente a partir de cadastro, sensor ou probabilidade.'}
+];
+const base=197196,b=document.getElementById('buttons'),m=document.getElementById('metric'),d=document.getElementById('delta'),desc=document.getElementById('desc');
+function fmt(v){return new Intl.NumberFormat('pt-BR').format(v)}
+function choose(i){document.querySelectorAll('.layerButtons button').forEach((x,j)=>x.classList.toggle('active',i===j));const x=layers[i];m.textContent=x.value===null?'NÃO DEFINIDA':fmt(x.value);desc.textContent=x.desc;if(x.value===null)d.textContent='nenhum algoritmo representa sozinho a necessidade coletiva';else if(i===0)d.textContent='camada oficial · referência';else{const p=((x.value/base)-1)*100;d.textContent=(p>=0?'+':'')+p.toFixed(1).replace('.',',')+'% em relação à população oficial';}}
+layers.forEach((x,i)=>{const bt=document.createElement('button');bt.textContent=(i+1).toString().padStart(2,'0')+' · '+x.label;bt.onclick=()=>choose(i);b.appendChild(bt)});choose(0);
+</script>
+</body></html>
