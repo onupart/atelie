@@ -5,44 +5,214 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>P01 — Quem o sistema vê? | Jesus Crypto</title>
 <style>
-:root{--paper:#eee6d6;--ink:#181714;--rust:#7b2f15;--blue:#244b55;--line:#8b7b62;--muted:#675f53}
-*{box-sizing:border-box}body{margin:0;background:#151512;color:var(--ink);font-family:Georgia,'Times New Roman',serif}.page{max-width:1040px;margin:auto;background:var(--paper);min-height:100vh;box-shadow:0 0 60px #0008}.hero{padding:54px 7vw 30px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#e9dfcd,#f3ecdf)}.kicker{font:700 14px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.12em;color:var(--rust)}h1{font-size:clamp(42px,8vw,88px);line-height:.9;margin:.25em 0 .18em;letter-spacing:-.04em}.lede{max-width:760px;font-size:20px;line-height:1.55;color:#332f2a}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;padding:34px 7vw}.panel{border:1px solid var(--line);background:#f6efe3;padding:22px}.panel h2{font-size:28px;margin:0 0 8px}.micro{font:12px/1.5 ui-monospace,Consolas,monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.layerButtons{display:grid;gap:9px;margin:18px 0}.layerButtons button{width:100%;text-align:left;border:1px solid #8d816f;background:#ece3d3;padding:12px 14px;cursor:pointer;font:600 15px ui-monospace,Consolas,monospace;color:#24211d}.layerButtons button.active{background:#22211e;color:#f1e8d8;border-color:#22211e}.metric{font:700 clamp(48px,8vw,76px)/1 ui-monospace,Consolas,monospace;margin:14px 0 6px;color:var(--blue)}.delta{font:14px ui-monospace,Consolas,monospace;color:var(--rust);min-height:1.5em}.question{font-size:27px;line-height:1.25;border-left:5px solid var(--rust);padding-left:18px;margin:22px 0}.sound{margin:0 7vw 38px;padding:24px;border:1px solid var(--line);background:#282621;color:#f1e9dc}.sound h2{color:#fff;margin:0 0 5px;font-size:26px}.sound p{color:#d6cab8;line-height:1.5}.cta{display:inline-block;padding:12px 16px;border:1px solid #d7c7ae;color:#fff;text-decoration:none;font:700 14px ui-monospace,Consolas,monospace;letter-spacing:.04em}.cta:hover{background:#eee4d3;color:#222}.note{padding:0 7vw 44px;color:#4d473f;line-height:1.55}.footer{padding:22px 7vw;background:#1f1e1b;color:#c9bba6;font:12px/1.6 ui-monospace,Consolas,monospace}.badge{display:inline-block;background:var(--rust);color:#fff;padding:5px 9px;font:700 12px ui-monospace,Consolas,monospace}@media(max-width:780px){.grid{grid-template-columns:1fr}}
+:root{
+  --paper:#efe6d7;
+  --paper-soft:#f6efe4;
+  --paper-dark:#e3d6c1;
+  --ink:#181714;
+  --ink-soft:#38332c;
+  --muted:#655d51;
+  --line:#8e7d68;
+  --rust:#7b2f15;
+  --rust-soft:#a04c2b;
+  --blue:#234955;
+  --dark:#12110f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--dark);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.6}
+a{color:inherit}
+.page{max-width:1240px;margin:auto;background:var(--paper);min-height:100vh;box-shadow:0 0 80px rgba(0,0,0,.45)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:14px 28px;background:#171512;color:#ddd0bc;border-bottom:1px solid #2f2a22;font:12px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.topbar nav{display:flex;gap:16px;flex-wrap:wrap}
+.topbar a{text-decoration:none;color:#ddd0bc;opacity:.92}
+.topbar a:hover{color:#fff}
+.hero{position:relative;min-height:80vh;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line);background:#d9cfbd}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,16,14,.14),rgba(17,16,14,.62)),linear-gradient(90deg,rgba(239,230,215,.94) 0%,rgba(239,230,215,.70) 38%,rgba(239,230,215,.18) 100%),url('hero.svg') center center/cover no-repeat}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:170px;background:linear-gradient(180deg,transparent,rgba(18,17,15,.16))}
+.heroContent{position:relative;z-index:2;padding:82px 7vw 58px;max-width:760px}
+.kicker{font:700 13px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.16em;color:var(--rust);margin-bottom:18px;text-transform:uppercase}
+.hero h1{margin:.15em 0 .18em;font-size:clamp(46px,8vw,96px);line-height:.9;letter-spacing:-.05em;text-transform:uppercase}
+.lede{margin:0;max-width:700px;font-size:clamp(18px,2vw,23px);color:var(--ink-soft)}
+.heroBadges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.badge{display:inline-block;padding:7px 11px;background:#1f1d1a;color:#f3eadc;border:1px solid #3c352b;font:700 12px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.05em;text-transform:uppercase}
+.section{padding:42px 7vw}
+.section+.section{border-top:1px solid #d5c6af}
+.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:26px}
+.sectionTitle{margin:0;font-size:clamp(28px,4vw,46px);line-height:1.02;letter-spacing:-.03em}
+.sectionKicker{font:700 12px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.14em;color:var(--rust);text-transform:uppercase;margin-bottom:10px}
+.sectionNote{max-width:430px;color:var(--muted);font-size:15px}
+.curatorialGrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:28px;align-items:start}
+.card{background:var(--paper-soft);border:1px solid var(--line);padding:24px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.card h3{margin:0 0 8px;font-size:30px;line-height:1.03}
+.micro{font:12px/1.5 ui-monospace,Consolas,monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.layerButtons{display:grid;gap:10px;margin:20px 0}
+.layerButtons button{width:100%;text-align:left;border:1px solid #8d816f;background:#ece3d3;padding:13px 15px;cursor:pointer;font:700 15px ui-monospace,Consolas,monospace;color:#24211d;transition:.18s ease}
+.layerButtons button:hover{transform:translateY(-1px);background:#f1e9dc}
+.layerButtons button.active{background:#22211e;color:#f1e8d8;border-color:#22211e}
+.metric{font:700 clamp(52px,8vw,82px)/1 ui-monospace,Consolas,monospace;margin:14px 0 6px;color:var(--blue)}
+.delta{font:14px ui-monospace,Consolas,monospace;color:var(--rust);min-height:1.6em}
+.desc{margin-top:10px;color:var(--ink-soft)}
+.asideBlock{position:sticky;top:18px}
+.question{font-size:30px;line-height:1.22;border-left:5px solid var(--rust);padding-left:18px;margin:16px 0 18px}
+.asideMeta{display:grid;gap:14px;margin-top:20px}
+.metaRow{padding-top:14px;border-top:1px solid #d6c8b2}
+.metaRow strong{display:block;font-size:14px;text-transform:uppercase;letter-spacing:.05em;font-family:ui-monospace,Consolas,monospace;color:var(--rust);margin-bottom:5px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.figure{background:#e8decc;border:1px solid var(--line);overflow:hidden}
+.figure img{display:block;width:100%;height:360px;object-fit:cover;filter:contrast(1.02) saturate(.88)}
+.figure figcaption{padding:16px 18px 18px}
+.figure h3{margin:0 0 8px;font-size:24px;line-height:1.05}
+.figure p{margin:0;color:#4f473d}
+.fullFigure{margin-top:24px;background:#e8decc;border:1px solid var(--line);overflow:hidden}
+.fullFigure img{display:block;width:100%;height:auto}
+.fullFigure figcaption{padding:18px}
+.quoteBand{padding:34px 7vw;background:#1d1b18;color:#efe4d2;border-top:1px solid #2f2a22;border-bottom:1px solid #2f2a22}
+.quoteBand blockquote{margin:0;max-width:980px;font-size:clamp(26px,3vw,40px);line-height:1.18;letter-spacing:-.03em}
+.quoteBand cite{display:block;margin-top:16px;font:700 12px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.12em;color:#cdb79c;text-transform:uppercase;font-style:normal}
+.sound{margin:0 7vw 42px;padding:28px;border:1px solid var(--line);background:#282621;color:#f1e9dc}
+.sound h2{margin:0 0 8px;font-size:30px;line-height:1.02;color:#fff}
+.sound p{margin:0 0 10px;max-width:900px;color:#d6cab8}
+.ctaRow{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+.cta{display:inline-block;padding:12px 16px;border:1px solid #d7c7ae;color:#fff;text-decoration:none;font:700 14px ui-monospace,Consolas,monospace;letter-spacing:.04em;text-transform:uppercase}
+.cta:hover{background:#eee4d3;color:#222}
+.note{padding:0 7vw 50px;color:#4d473f;line-height:1.65}
+.noteGrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.notePanel{padding:18px;border:1px solid #d2c2a9;background:#f3ecdf}
+.footer{padding:22px 7vw;background:#161512;color:#c9bba6;font:12px/1.6 ui-monospace,Consolas,monospace;letter-spacing:.05em;text-transform:uppercase}
+@media(max-width:1040px){.curatorialGrid,.gallery,.noteGrid{grid-template-columns:1fr}.asideBlock{position:static}.figure img{height:300px}}
+@media(max-width:780px){.hero{min-height:62vh}.heroContent{padding:62px 7vw 44px}.topbar{padding:12px 18px;justify-content:flex-start;flex-wrap:wrap}.sectionHead{display:block}.hero::before{background:linear-gradient(180deg,rgba(17,16,14,.26),rgba(17,16,14,.68)),linear-gradient(180deg,rgba(239,230,215,.82) 0%,rgba(239,230,215,.32) 44%,rgba(239,230,215,.12) 100%),url('hero.svg') 62% center/cover no-repeat}}
 </style>
 </head>
-<body><main class="page">
-<section class="hero">
-<div class="kicker">JESUS CRYPTO · PORTAL P01</div>
-<h1>Quem o sistema vê?</h1>
-<p class="lede">Uma cidade não tem um único número. Ela muda conforme o critério de contagem. Este portal confronta população oficial, observada, provável, funcional e necessária — e pergunta o que acontece com quem permanece entre uma camada e outra.</p>
-</section>
-<section class="grid">
-<div class="panel">
-<div class="micro">CENSO PERMANENTE · INTERFACE EXPERIMENTAL</div>
-<h2>As cinco cidades</h2>
-<div class="layerButtons" id="buttons"></div>
-<div id="metric" class="metric">197.196</div>
-<div id="delta" class="delta">camada oficial · referência</div>
-<p id="desc">População reconhecida administrativamente. É a cidade que cabe no cadastro.</p>
-</div>
-<div class="panel">
-<div class="micro">LEITURA CRÍTICA</div>
-<div class="question">Quando um indicador muda, a cidade mudou — ou mudou apenas quem o sistema consegue reconhecer?</div>
-<p>O experimento não apresenta uma população “verdadeira”. Ele mostra que diferentes infraestruturas de informação produzem cidades diferentes. O número <strong>necessário</strong> permanece deliberadamente sem valor: necessidades coletivas não podem ser deduzidas automaticamente de um cadastro.</p>
-<span class="badge">MÉTRICA ≠ VIDA</span>
-</div>
-</section>
-<section class="sound">
-<div class="micro" style="color:#bda98e">PONTE SONORA · S01</div>
-<h2>Ranking Não Mede Sangue</h2>
-<p>3min55s · métrica urbana versus corpo e vida. A canção pertence à trilha curatorial expandida do <em>Companion Book</em> e aqui funciona como ponte seletiva para P01.</p>
-<a class="cta" href="https://drive.google.com/file/d/1WExnIK1oqVxoVFVZLR920UH8kRZwxTPS/view" target="_blank" rel="noopener">OUVIR S01 ↗</a>
-</section>
-<section class="note">
-<p><strong>Regra do portal:</strong> esta experiência acrescenta uma camada ao romance; não substitui a narrativa nem oferece uma resposta única. O leitor deve sair com uma pergunta mais precisa sobre contagem, reconhecimento e poder.</p>
-<p class="micro">P01 · PROTÓTIPO WEB v01 · JESUS CRYPTO</p>
-</section>
-<footer class="footer">P01 — QUEM O SISTEMA VÊ · JESUS CRYPTO: ETERNIDADE OU MORTE · PORTAL TRANSMÍDIA · 2026</footer>
+<body>
+<main class="page">
+  <div class="topbar">
+    <div>Jesus Crypto · Portal P01</div>
+    <nav>
+      <a href="#interface">Interface</a>
+      <a href="#pranchas">Pranchas</a>
+      <a href="#som">Ponte sonora</a>
+      <a href="#notas">Notas curatoriais</a>
+    </nav>
+  </div>
+
+  <section class="hero">
+    <div class="heroContent">
+      <div class="kicker">P01 · Digigravura museográfica · Companion + romance</div>
+      <h1>Quem o sistema vê?</h1>
+      <p class="lede">Uma cidade não tem um único número. Ela muda conforme o critério de contagem. Este portal confronta população oficial, observada, provável, funcional e necessária — e pergunta o que acontece com quem permanece entre uma camada e outra.</p>
+      <div class="heroBadges">
+        <span class="badge">Métrica ≠ vida</span>
+        <span class="badge">Cinco regimes de visibilidade</span>
+        <span class="badge">Portal transmídia</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="interface">
+    <div class="sectionHead">
+      <div>
+        <div class="sectionKicker">Sala 01 · Interface crítica</div>
+        <h2 class="sectionTitle">A cidade muda quando o indicador muda?</h2>
+      </div>
+      <div class="sectionNote">A experiência foi redesenhada como uma pequena sala museográfica digital: primeiro o visitante lê a pergunta, depois aciona as camadas de contagem e, por fim, confronta os dados com as pranchas visuais.</div>
+    </div>
+
+    <div class="curatorialGrid">
+      <article class="card">
+        <div class="micro">Censo permanente · camadas de visibilidade</div>
+        <h3>As cinco cidades</h3>
+        <div class="layerButtons" id="buttons"></div>
+        <div id="metric" class="metric">197.196</div>
+        <div id="delta" class="delta">camada oficial · referência</div>
+        <p id="desc" class="desc">População reconhecida administrativamente. É a cidade que cabe no cadastro.</p>
+      </article>
+
+      <aside class="asideBlock">
+        <article class="card">
+          <div class="micro">Leitura curatorial</div>
+          <div class="question">Quando um indicador muda, a cidade mudou — ou mudou apenas quem o sistema consegue reconhecer?</div>
+          <p>O portal não apresenta uma população “verdadeira”. Ele mostra que diferentes infraestruturas de informação produzem cidades distintas. A camada <strong>necessária</strong> permanece sem valor numérico porque necessidades coletivas não podem ser deduzidas automaticamente de cadastro, sensor ou probabilidade.</p>
+          <div class="asideMeta">
+            <div class="metaRow"><strong>Princípio</strong><span>Mudança de métrica não equivale automaticamente a mudança da vida social.</span></div>
+            <div class="metaRow"><strong>Material visual</strong><span>I01, I02 e pranchas de digigravura para leitura expandida.</span></div>
+            <div class="metaRow"><strong>Função no livro</strong><span>Adicionar uma camada de exploração sem substituir a narrativa do romance.</span></div>
+          </div>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <section class="quoteBand">
+    <blockquote>“Os números produzem cidades distintas porque o reconhecimento estatístico, a presença material e a necessidade coletiva não são equivalentes.”</blockquote>
+    <cite>Jesus Crypto · Curadoria do Portal P01</cite>
+  </section>
+
+  <section class="section" id="pranchas">
+    <div class="sectionHead">
+      <div>
+        <div class="sectionKicker">Sala 02 · Pranchas de leitura</div>
+        <h2 class="sectionTitle">Digigravuras para ler o que o indicador não mostra</h2>
+      </div>
+      <div class="sectionNote">As imagens não funcionam como ilustração decorativa. Elas operam como painéis curatoriais: dão espessura territorial, ética e corporal ao problema da contagem.</div>
+    </div>
+
+    <div class="gallery">
+      <figure class="figure">
+        <img src="cities.svg" alt="Infográfico em estilo digigravura mostrando as cinco cidades sobrepostas em uma cidade costeira">
+        <figcaption>
+          <h3>As cinco cidades</h3>
+          <p>Mapa-infográfico em digigravura: cidade censitária, observada, provável, funcional e necessária como regimes distintos de reconhecimento.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="blood.svg" alt="Ilustração em digigravura sobre corpo, desigualdade e vida urbana">
+        <figcaption>
+          <h3>Vida, cidade e desigualdade</h3>
+          <p>Prancha conceitual que tensiona número, corpo e permanência: o dado sobe, mas a vida concreta continua exposta.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <figure class="fullFigure">
+      <img src="hero.svg" alt="Panorama cartográfico de cidade costeira em estilo digigravura">
+      <figcaption>
+        <strong>Panorama cartográfico.</strong> Cidade costeira, portos, morros, circuitos e populações sobrepostas em uma composição síntese do universo visual de <em>Jesus Crypto</em>.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="sound" id="som">
+    <div class="micro" style="color:#bda98e">Ponte sonora seletiva · S01</div>
+    <h2>Ranking Não Mede Sangue</h2>
+    <p>3min55s · métrica urbana versus corpo e vida. A canção pertence à trilha expandida do <em>Companion Book</em> e aqui funciona como ponte seletiva para P01, deslocando a leitura do número para o corpo e para a desigualdade territorial.</p>
+    <div class="ctaRow">
+      <a class="cta" href="https://drive.google.com/file/d/1WExnIK1oqVxoVFVZLR920UH8kRZwxTPS/view" target="_blank" rel="noopener">Ouvir S01 ↗</a>
+      <a class="cta" href="#interface">Voltar à interface ↑</a>
+    </div>
+  </section>
+
+  <section class="note" id="notas">
+    <div class="sectionHead">
+      <div>
+        <div class="sectionKicker">Sala 03 · Notas curatoriais</div>
+        <h2 class="sectionTitle">Como esta experiência deve ser lida</h2>
+      </div>
+    </div>
+    <div class="noteGrid">
+      <div class="notePanel">
+        <p><strong>Regra do portal:</strong> esta experiência acrescenta uma camada ao romance; não substitui a narrativa nem oferece uma resposta única. O leitor deve sair com uma pergunta mais precisa sobre contagem, reconhecimento e poder.</p>
+      </div>
+      <div class="notePanel">
+        <p><strong>Estado editorial:</strong> P01 · protótipo web v03 · interface editorial/museográfica em digigravura · versão pública no GitHub Pages para teste editorial e curatorial.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">P01 — Quem o sistema vê · Jesus Crypto: Eternidade ou morte · Portal transmídia · 2026</footer>
 </main>
+
 <script>
 const layers=[
 {id:'oficial',label:'OFICIAL',value:197196,desc:'População reconhecida administrativamente. É a cidade que cabe no cadastro.'},
@@ -53,7 +223,25 @@ const layers=[
 ];
 const base=197196,b=document.getElementById('buttons'),m=document.getElementById('metric'),d=document.getElementById('delta'),desc=document.getElementById('desc');
 function fmt(v){return new Intl.NumberFormat('pt-BR').format(v)}
-function choose(i){document.querySelectorAll('.layerButtons button').forEach((x,j)=>x.classList.toggle('active',i===j));const x=layers[i];m.textContent=x.value===null?'NÃO DEFINIDA':fmt(x.value);desc.textContent=x.desc;if(x.value===null)d.textContent='nenhum algoritmo representa sozinho a necessidade coletiva';else if(i===0)d.textContent='camada oficial · referência';else{const p=((x.value/base)-1)*100;d.textContent=(p>=0?'+':'')+p.toFixed(1).replace('.',',')+'% em relação à população oficial';}}
-layers.forEach((x,i)=>{const bt=document.createElement('button');bt.textContent=(i+1).toString().padStart(2,'0')+' · '+x.label;bt.onclick=()=>choose(i);b.appendChild(bt)});choose(0);
+function choose(i){
+  document.querySelectorAll('.layerButtons button').forEach((x,j)=>x.classList.toggle('active',i===j));
+  const x=layers[i];
+  m.textContent=x.value===null?'NÃO DEFINIDA':fmt(x.value);
+  desc.textContent=x.desc;
+  if(x.value===null)d.textContent='nenhum algoritmo representa sozinho a necessidade coletiva';
+  else if(i===0)d.textContent='camada oficial · referência';
+  else {
+    const p=((x.value/base)-1)*100;
+    d.textContent=(p>=0?'+':'')+p.toFixed(1).replace('.',',')+'% em relação à população oficial';
+  }
+}
+layers.forEach((x,i)=>{
+  const bt=document.createElement('button');
+  bt.textContent=(i+1).toString().padStart(2,'0')+' · '+x.label;
+  bt.onclick=()=>choose(i);
+  b.appendChild(bt);
+});
+choose(0);
 </script>
-</body></html>
+</body>
+</html>
